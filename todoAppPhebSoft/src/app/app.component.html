@@ -1,41 +1,86 @@
-<div class="row">
-  <div class="col-sm-6 m-auto pt-5">
-    <form  #theForm="ngForm" class="m-auto" (submit)="onSubmit(theForm)" >
-      <div class="form-group"  style="width: 260px;">
-        <label for="taskField">Task</label>
-        <input type="text" class="form-control" id="taskField" #task ngModel>
-        <small id="error" *ngIf="!task.value" class="form-text text-danger">Field is required.</small>
+<div class="row topRow">
+  <div class="col-sm-12">
+    <form
+      #theForm="ngForm"
+      id="myform"
+      class="form-inline"
+      (submit)="onSubmit(theForm)"
+    >
+      <div class="taskContainer">
+        <div class="form-group fg">
+          <label for="taskDescription">Task</label>
+          <input
+            type="text"
+            class="form-control"
+            name="taskDescription"
+            placeholder="Enter Task Description"
+            #task
+            ngModel
+            required
+          />
+        </div>
+        <button class="btn btn-primary submit-btn mt-4" type="submit">
+          Add
+        </button>
       </div>
-      <button class="submit-btn"
-      type="submit" class="btn btn-primary">Add</button>
+      <small
+        *ngIf="task.focus && !task.value"
+        class="form-text text-danger error"
+        >Field is required.</small
+      >
     </form>
+  </div>
+</div>
 
-
+<div class="row">
+  <div class="col-sm-6 m-auto">
     <div class="blocks">
-      <div class="block" [style.background]="block.color" *ngFor="let block of blocks">
-        <h5 class="blockTitle">{{block.title}}</h5>
-        <span class="blockContent">{{block.content}}</span>
+      <div
+        class="block"
+        [style.background]="block.color"
+        *ngFor="let block of blocks"
+      >
+        <h5 class="blockTitle">{{ block.title }}</h5>
+        <span class="blockContent">{{ getTasksCount(block.status) }}</span>
       </div>
     </div>
   </div>
+</div>
 
-  <div class="tablesDiv">
-    <table class="table">
-      <thead class="thead-dark">
-        <tr>
-          <th scope="row">id</th>
-          <th scope="row">Task</th>
-          <th scope="row">Status</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let item of TasksList">
-          <td>{{item.id}}</td>
-          <td>{{item.task}}</td>
-          <td>{{item.status}}</td>
-        </tr>
-
-      </tbody>
-    </table>
+<div class="row">
+  <div class="col-sm-8 m-auto">
+    <div class="tablesDiv">
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="row">id</th>
+            <th scope="row">Task</th>
+            <th scope="row">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of TasksList">
+            <td>{{ item.id }}</td>
+            <td>
+              <span style="margin: 0 6px;">
+                <label class="switch">
+                  <input
+                    type="checkbox"
+                    form="myform"
+                    name="taskDescription"
+                    #toggle
+                    ngModel
+                  />
+                  <span class="slider round"></span>
+                </label>
+              </span>
+              {{ item.task }}</td>
+            <td>
+              {{ item.status }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
