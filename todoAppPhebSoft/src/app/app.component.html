@@ -1,0 +1,41 @@
+<div class="row">
+  <div class="col-sm-6 m-auto pt-5">
+    <form  #theForm="ngForm" class="m-auto" (submit)="onSubmit(theForm)" >
+      <div class="form-group"  style="width: 260px;">
+        <label for="taskField">Task</label>
+        <input type="text" class="form-control" id="taskField" #task ngModel>
+        <small id="error" *ngIf="!task.value" class="form-text text-danger">Field is required.</small>
+      </div>
+      <button class="submit-btn"
+      type="submit" class="btn btn-primary">Add</button>
+    </form>
+
+
+    <div class="blocks">
+      <div class="block" [style.background]="block.color" *ngFor="let block of blocks">
+        <h5 class="blockTitle">{{block.title}}</h5>
+        <span class="blockContent">{{block.content}}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="tablesDiv">
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="row">id</th>
+          <th scope="row">Task</th>
+          <th scope="row">Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of TasksList">
+          <td>{{item.id}}</td>
+          <td>{{item.task}}</td>
+          <td>{{item.status}}</td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+</div>
