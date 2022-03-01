@@ -9,11 +9,12 @@ import { NgForm } from '@angular/forms';
 export class AppComponent implements OnInit {
 
   TasksList: TasksModel[] = [];
+  toggleValue: any;
 
   blocks: any[] = [
-    { title: 'Total Tasks', content: 233, color: 'rgb(135, 40, 40)' },
-    { title: 'In Progress', content: 2, color: 'steelblue' },
-    { title: 'Completed', content: 23, color: 'green' },
+    { title: 'Total Tasks', content: 233, color: '#6e1423' },
+    { title: 'In Progress', content: 2, color: '#007ea7' },
+    { title: 'Completed', content: 23, color: '#136f63' },
   ];
 
   ngOnInit(): void {
@@ -21,6 +22,11 @@ export class AppComponent implements OnInit {
     this.TasksList = [];
   }
 
+  toggleVal(task: TasksModel, event: any){
+    event.target.checked ?
+      task.status = 'In Progress' : task.status = 'Done';
+
+  }
 
   onSubmit(theForm: NgForm) {
     console.log(theForm.value);

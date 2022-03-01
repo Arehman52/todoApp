@@ -2,12 +2,29 @@
   margin: 34px auto;
   width: 900px;
 }
-
-.topRow {
-  background-color: rgba(255, 251, 0, 0.384);
-  height: 116px;
+.cn-btn{
+  margin-right: 4px;
 }
-
+.h4{
+  color: #cecece;
+  text-align: center;
+  font-weight: bolder;
+  padding: 8px 0 0 0;
+}
+.topRow {
+  background-color: #14213d;
+  width: 100%;
+  padding: 0 0 10px 0;
+}
+.alignR{
+text-align: right;
+}
+.customtext option{
+  color: #495057;
+}
+.inVisible{
+  visibility: hidden;
+}
 .blocks {
   display: flex;
   flex-direction: row;
@@ -61,9 +78,7 @@
   top: -9px;
 }
 .tablesDiv {
-  position: relative;
-  left: 0px;
-  border: 3px solid #ececec;
+  border: 2px solid #415a77;
   border-radius: 6px;
   padding: 8px;
 }
@@ -94,14 +109,20 @@
   -webkit-transition: 0.4s;
   transition: 0.4s;
 }
+.w20{
+  width: 20%;
+}
+.w60{
+  width: 60%;
+}
 
 .slider:before {
   position: absolute;
   content: "";
   height: 20px;
   width: 20px;
-  left: -2px;
-  bottom: 1px;
+  left: 0px;
+  bottom: 0px;
   background-color: white;
   -webkit-transition: 0.4s;
   transition: 0.4s;

@@ -1,7 +1,8 @@
 <div class="row topRow">
-  <div class="col-sm-12">
+  <div class="col-12"><h4 class="h4">To Do App</h4></div>
+  <div class="col-sm-6 m-auto">
     <form
-      #theForm="ngForm"
+    #theForm="ngForm"
       id="myform"
       class="form-inline"
       (submit)="onSubmit(theForm)"
@@ -14,7 +15,6 @@
             class="form-control"
             name="taskDescription"
             placeholder="Enter Task Description"
-            #task
             ngModel
             required
           />
@@ -24,11 +24,25 @@
         </button>
       </div>
       <small
-        *ngIf="task.focus && !task.value"
+        [ngClass]="{'inVisible': theForm.valid}"
         class="form-text text-danger error"
         >Field is required.</small
       >
     </form>
+  </div>
+  <div class="col-sm-3 mt-4 pt-3 ml-5">
+    <div class="input-group cn-btn">
+      <div class="input-group-prepend">
+        <label class="input-group-text" for="inputGroupSelect01">User :</label>
+      </div>
+      <select class="custom-select" id="inputGroupSelect01">
+        <option selected>Select User</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="col-sm-2  m-auto">
+    <button type="button" class="btn btn-primary mt-1" data-toggle="modal" data-target="#createUserModal">Create New User</button>
   </div>
 </div>
 
@@ -53,9 +67,9 @@
       <table class="table">
         <thead class="thead-dark">
           <tr>
-            <th scope="row">id</th>
-            <th scope="row">Task</th>
-            <th scope="row">Status</th>
+            <th scope="row" class="w20">id</th>
+            <th scope="row" class="w60">Task</th>
+            <th scope="row" class="w20">Status</th>
           </tr>
         </thead>
         <tbody>
@@ -67,9 +81,12 @@
                   <input
                     type="checkbox"
                     form="myform"
+                    [checked]="false"
                     name="taskDescription"
                     #toggle
                     ngModel
+                    [(value)]="toggleValue"
+                    (change)="toggleVal(item, $event)"
                   />
                   <span class="slider round"></span>
                 </label>
@@ -81,6 +98,29 @@
           </tr>
         </tbody>
       </table>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="createUserModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
     </div>
   </div>
 </div>
