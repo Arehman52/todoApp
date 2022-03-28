@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { ApiService } from './api.service';
 
 @Component({
   selector: 'app-root',
@@ -7,6 +8,8 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
+
+  constructor(public api: ApiService) {}
 
   TasksList: TasksModel[] = [];
   toggleValue: any;
@@ -20,6 +23,7 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     //call fetch api here and populate following array with it.
     this.TasksList = [];
+
   }
 
   toggleVal(task: TasksModel, event: any){

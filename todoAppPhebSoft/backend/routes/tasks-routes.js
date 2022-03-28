@@ -1,6 +1,6 @@
 const express = require("express");
 
-const Tasks = require("../models/tasks");
+const Tasks = require("../models/tasks.model");
 const router = express.Router();
 
 router.get("/FetchTasks", (req, res, next) => {

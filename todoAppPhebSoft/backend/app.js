@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-// const UsersRoutes = require('./routes/users-routes');
+const TaskRoutes = require('./routes/tasks-routes');
 // const LabTasksRoutes = require('./routes/labTasks-routes');
 // const StudentActivityHistoryRoutes = require('./routes/student-activity-history-routes');
 // const StudentAttemptedLabTasksRoutes = require('./routes/student-attempted-lab-tasks-routes');
@@ -55,7 +55,7 @@ let cors = require('cors')
 app.use(cors())
 
 //-->  /api/Homepage + [/CreateUser && /FetchTHISUser]
-// app.use("/api/LabChallenges", LabChallengesRoutes);
+app.use("/api/Tasks", TaskRoutes);
 // app.use("/api/StudentAttemptedLabChallenges", StudentAttemptedLabChallengesRoutes);
 // app.use("/api/StudentAttemptedLabTasks", StudentAttemptedLabTasksRoutes);
 // app.use("/api/Labs", LabsRoutes);

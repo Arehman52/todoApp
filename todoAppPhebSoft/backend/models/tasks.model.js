@@ -4,7 +4,8 @@ const mongoose = require("mongoose");
 const taskScehma = mongoose.Schema({
   // id:  { type: String, required: true, unique: true, lowercase: true},
   Description: String,
-  Status: String
+  Status: String,
+  CreatedBy: String,
 });
 
 // taskScehma.plugin(uniqueValidator);
